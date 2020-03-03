@@ -9,8 +9,8 @@ puts "Exercise 6"
 puts "----------"
 
 # Your code goes here ...
-@store4 = Store.find_by(id: 4)
-@store5 = Store.find_by(id: 5)
+@store4 = Store.find(4)
+@store5 = Store.find(5)
 
 
 @store1.employees.create(first_name: "Khurram", last_name: "Virani", hourly_rate: 60)

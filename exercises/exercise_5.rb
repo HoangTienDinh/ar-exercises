@@ -9,19 +9,12 @@ puts "----------"
 
 # Your code goes here ...
 
-@total_revenue = Store.sum("annual_revenue")
-@all_stores = Store.all
+@total_revenue = Store.sum(:annual_revenue)
+@all_stores_average = Store.average(:annual_revenue).to_i
+@over_million = Store.where("annual_revenue > 1000000").count
 
 puts "The total revenue for all stores is #{@total_revenue}"
 
-puts "The average revenue for all stores is #{@total_revenue / Store.count}"
+puts "The average revenue for all stores is #{@all_stores_average}"
 
-storeArray = []
-@all_stores.each { |s|
-  if (s.annual_revenue > 1000000)
-    # puts "The #{s.name} store has an annual revenue of #{s.annual_revenue} which is over $1,000,000!"
-    storeArray.push(s)
-  end
-}
-
-puts "There are #{storeArray.length} stores with over $1,000,000 in annual revenue!"
+puts "There are #{@over_million} stores with over $1,000,000 in annual revenue!"

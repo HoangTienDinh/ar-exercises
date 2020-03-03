@@ -1,7 +1,5 @@
 class Store < ActiveRecord::Base
   has_many :employees
-end
-
-class Employee < ActiveRecord::Base
-  belongs_to :Store
+  validates :name, length: { minimum: 3 }
+  validates :annual_revenue, numericality: { greater_than: 0 }
 end
